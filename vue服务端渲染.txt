@@ -1,0 +1,8 @@
+
+服务端渲染 SSR(Server-Side Rendering)
+    解决办法
+        1.string-based （基于字符串拼接）
+            通过ejs或者pug等等这些引擎通过它们一些规则实现一些数据的填充
+        2.virtual-dom-based（基于虚拟dom对象）
+            前端渲染相配合的服务端同构渲染（isomorphic），同构即前后端共用一套代码，后端通过编写一些规则将前端代码转成virtual-dom对象,调用render再取数据渲染出HTML出来
+    

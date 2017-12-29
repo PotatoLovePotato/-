@@ -1,0 +1,31 @@
+
+进入要上传的目录
+
+    第一次上传
+        git init 
+            初始化本地库
+
+        git add .
+            添加要上传的文件 "."代表全部 页可以选择要上传的具体的文件名
+
+        git commit -m "上传文件说明"
+            上传文件时的说明
+
+        git remote add origin GitHub地址
+            origin 是别名可以更改
+
+        git push -u origin master
+            开始上传 会提示输入github 账号密码
+
+    第二次上传
+        git add .
+            添加要上传的文件 "."代表全部 页可以选择要上传的具体的文件名
+
+        git commit -m "上传文件说明"
+            上传文件时的说明
+
+        git push -u origin master
+            origin 是上边设置好的别名 
+
+
+

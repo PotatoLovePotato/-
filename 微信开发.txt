@@ -1,0 +1,408 @@
+创建小程序项目
+    1.需要AppID
+    2.登陆微信号需要是AppID的开发者
+
+新建页面有两种方式
+    1.在目录树上右键，选择新建 Page，将自动生成页面所需要的 wxml、wxss、js、json
+    2.在 app.json 的 pages 字段，添加需要新建的页面的路径，将会自动生成改页面所需要的文件
+
+小程序支持的文件格式
+    1.json 后缀的 JSON 配置文件
+    2.wxml 后缀的 WXML 模板文件
+    3.wxss 后缀的 WXSS 样式文件
+    4.js 后缀的 JS 脚本逻辑文件
+
+JSON配置
+    app.json:
+        app.json 是对当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等
+            pages 定义页面的文件路径
+                接受一个数组每一项都是字符串 每一项对应页面的路径和文件名
+                数组的第一项是默认页面
+
+            window 设置默认页面的窗口表现
+                navigationBarBackgroundColor:
+                    导航栏背景颜色 只接受HexColor 默认#000
+
+                navigationBarTextStyle:
+                    导航栏标题颜色，仅支持 black/white 默认white
+
+                navigationBarTitleText:
+                    导航栏标题内容 
+
+                backgroundColor: 
+                    窗口的背景颜色 只接受HexColor 默认#fff
+
+                backgroundTextStyle: 
+                    下拉背景字体、loading 图的样式，仅支持 dark/light dark
+
+                enablePullDownRefresh:
+                    是否开启下拉刷新 默认false
+
+                onReachBottomDistance:
+                    页面上拉触底事件触发时距页面底部距离，单位为px
+
+            tabBar 设置tab底部的表现
+                Tip:注意事项并非属性
+                    1.当设置 position 为 top 时，将不会显示 icon (暂时不懂)
+                    2.tabBar 中的 list 是一个数组，只能配置最少2个、最多5个 tab，tab 按数组的顺序排序。
+
+                color: 接受HexColor (16进制的颜色)
+                    tab上的文字默认颜色
+
+                selectedColor: 接受HexColor
+                    tab上的文字选中时的颜色
+
+                backgroundColor: 接受HexColor
+                    tab的背景颜色
+
+                borderStyle: 接受string 默认black
+                    tabbar上边框的颜色，仅支持 black/white
+
+                list: 接受数组 并且数组的每一项都是一个对象
+                    tab的列表最少2最多5个
+                    数组对象中的参数: 全部接受字符串
+                        pagePath:
+                            页面路径必须在pages中先定义
+                        text:
+                            tab按钮上的文字
+                        iconPath:
+                            图片路径，icon大小限制在40kb内，建议尺寸 81 * 81 position参数为top时此项无效，不支持网络图片
+                        selectedIconPath:
+                            选中时的图片路径，icon大小限制在40kb内，建议尺寸 81 * 81 position参数为top时此项无效，不支持网络图片
+
+                position: 接受string 默认bottom
+                    tabbar的位置 可选值 bottom/top
+
+            networkTimeout 设置网络延迟时间
+                request:
+                    wx.request 的超时时间
+                
+                connectSocket:
+                    wx.connectSocket 的超时时间
+
+                uploadFile:
+                    wx.uploadFile 的超时时间
+                
+                downloadFile:
+                    wx.downloadFile 的超时时间
+
+            debug 设置是否开启debug模式
+                PS: 
+                    可以在开发者工具中开启 debug 模式，在开发者工具的控制台面板，调试信息以 info 的形式给出，其信息有Page的注册，页面路由，数据更新，事件触发 。 可以帮助开发者快速定位一些常见的问题。
+
+    project.config.json
+        project.config.json 是微信开发工具配置免去了换电脑还要重新配置的麻烦
+    page.json   
+        page.json 是定义小程序页面的独立风格 名称和组件名一直 如 logs.也就是覆盖app.json中window中的相同配置项
+
+        navigationBarBackgroundColor:
+            导航栏背景颜色 只接受HexColor 默认#000
+
+        navigationBarTextStyle:
+            导航栏标题颜色，仅支持 black/white 默认white
+
+        navigationBarTitleText:
+            导航栏标题内容 
+
+        backgroundColor: 
+            窗口的背景颜色 只接受HexColor 默认#fff
+
+        backgroundTextStyle: 
+            下拉背景字体、loading 图的样式，仅支持 dark/light dark
+
+        enablePullDownRefresh:
+            是否开启下拉刷新 默认false
+
+        onReachBottomDistance:
+            页面上拉触底事件触发时距页面底部距离，单位为px
+
+WXML模板
+    WXML模板 类似HTML 但标签名不同
+        text组件可以识别换行符（\n）直接回车书写会顶部会出现空白 解决办法：1.紧接着text书写不换行 2.暂无其他办法
+
+    swiper: 
+        indicator-dots	
+            参数形式:  Boolean	
+            默 认:    false	
+            功能:     是否显示面板指示点
+
+        indicator-color	
+            参数形式:  Color	
+            默 认:     rgba(0, 0, 0, .3)	
+            功能:      指示点颜色
+
+        indicator-active-color	
+            参数形式:  Color
+            功能:      000000	
+            功能:      当前选中的指示点颜色
+
+        autoplay	
+            参数形式:   Boolean	
+            默 认:      false	
+            功能:      是否自动切换
+
+        current	
+            参数形式:   Number	
+            默 认:      0	
+            功能:      当前所在页面的 index
+
+        interval	
+            参数形式:   Number	
+            默 认:      5000	
+            功能:      自动切换时间间隔
+
+        duration	
+            参数形式:   Number	
+            默 认:      500	
+            功能:      滑动动画时长
+
+        circular	
+            参数形式:   Boolean	
+            默 认:      false	
+            功能:       是否采用衔接滑动
+
+        bindchange	
+            参数形式:   EventHandle		
+            默认:       
+            功能:       current 改变时会触发 change 事件，event.detail = {current: current}
+
+WXSS样式
+    WXSS样式 类似css 但单位不同
+        新增rpx单位 rpx采用浮点计算计算结果会有偏差
+
+JS交互逻辑
+    Tip:
+        由于框架并非在真实的浏览器中运行 所以无法使用 document,window
+    注册程序:
+        App():
+            Tip:
+                1.App() 函数必须在 app.json中注册，不可注册多个
+                2.不要在定义在定义于App()内的函数中调用getApp() 调用this即可
+                3.onLaunch 函数中不能调用 getCurrentPages() 此时page还没有生成
+                4.通过getApp()获取实例后不要调用生命周期
+            
+    场景值：
+        Tip:
+            由于Android系统限制，目前还无法获取到按 Home 键退出到桌面，然后从桌面再次进小程序的场景值，对于这种情况，会保留上一次的场景值。
+        1001: 发现小程序主入口
+        1005: 顶部搜索框的搜索结果页
+        1006: 发现小程序主入口搜索结果页
+        1007: 单人聊天会话中的小程序消息卡片
+        1008: 群聊天会话中的小程序卡片
+        1011: 扫描二维码
+        1012: 长按图片识别二维码
+        1013: 手机相册选取二维码
+        1014: 小程序模板消息
+        1017: 前往体验版入口页
+        1019: 微信钱包
+        1020: 公众号profile页相关小程序列表
+        1023: 按住系统桌面图标
+        1024: 小程序profile页
+        1025: 扫描一维码
+        1026: 附近小程序列表
+        1027: 顶部搜索框的搜索结果页 使用过的小程序列表
+        1028: 我的卡包
+        1029: 卡券详情页
+        1030: 自动化测试下打开小程序
+        1031: 长按图片识别一维码
+        1032: 手机相册选取一维码
+        1034: 微信支付完成页
+        1035: 公众号自定义菜单
+        1036: App 分享消息卡片
+        1037: 小程序打开小程序
+        1038: 从另一个小程序返回
+        1039: 摇电视
+        1042: 添加好友搜索框的搜索结果页
+        1043: 公众号模板消息
+        1044: 带 shareTicket 的小程序消息卡片（详情)
+        1047: 扫描小程序码
+        1048: 长按图片识别小程序码
+        1049: 手机相册选取小程序码
+        1052: 卡券的适用门店列表
+        1053: 搜一搜的结果页
+        1054: 顶部搜索框小程序快捷入口
+        1056: 音乐播放器菜单
+        1058: 公众号文章
+        1059: 体验版小程序绑定邀请页
+        1064: 微信连Wifi状态栏
+        1067: 公众号文章广告
+        1068: 附近小程序列表广告
+        1072: 二维码收款页面
+        1073: 客服消息列表下发的小程序消息卡片
+        1074: 公众号会话下发的小程序消息卡片
+
+    注册页面: 组件内定义 Page() 定义生命周期函数，事件处理函数，页面初始数据
+        Tip:
+            object 内容在页面加载时会进行一次深拷贝，需考虑数据大小对页面加载的开销
+        data: 
+            页面的初始数据
+        
+        onLoad:
+            监听页面加载
+
+        onReady:
+            监听页面的初次加载完成加载
+
+        onShow: Function	
+            监听页面显示
+
+        onHide:
+            监听页面隐藏
+
+        onUnload:
+            监听页面卸载
+
+        onPullDownRefresh: 
+            监听用户下拉操作
+
+        onReachBottom:
+            监听页面上拉触底
+
+        onShareAppMessage:
+            Tip:
+                只有定义了此事件处理函数，右上角菜单才会显示“转发”按钮
+                用户点击转发按钮的时候会调用
+                此事件需要 return 一个 Object，用于自定义转发内容
+
+            用户点击右上角转发
+
+            自定义转发字段:
+                title: 默认当前小程序的名称
+                    转发标题 当前小程序的名称
+
+                path: 当前页面path, 必须以 / 开头的完整路径
+                    转发路径
+
+        onPageScroll:
+            页面滚动的处理函数
+
+        可以自己定义事件处理函数的名字：
+            处理给定事件
+        
+        Page内置函数和属性 （存在于prototype）
+            Page.route: 获取当前页面的路径信息
+
+            Page.setData(): 用于异步的将数据发送到视图层 同时同步的改变 data 中储存的值
+                Tip: 
+                    不要把data中的任何一项的value设置成 undefined
+                setData 参数: setData(data, [callBack]) 
+                    第一个参数: 要改变的值得名（key）
+                    第二个参数：页面渲染完成的回调函数
+    页面路由:
+        PS: 框架已栈的形式维护了所有所有页面
+
+        打开新页面: 参数 object
+            调用 API wx.navigateTo 或使用组件 <navigator open-type="navigateTo"/>
+                url: 
+                    需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数。参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&分隔；如 ‘path?key=value&key2=value2’
+                
+                success:
+                    接口调用成功的回调函数
+
+                fail:
+                    接口调用失败的回调函数
+
+                complate:
+                    接口调用结束的回调函数（成功和失败都会调用）
+
+        页面重定向: 参数 object
+            调用 API wx.redirectTo 或使用组件 <navigator open-type="redirectTo"/>
+                url: 
+                    需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数。参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&分隔；如 ‘path?key=value&key2=value2’
+                
+                success:
+                    接口调用成功的回调函数
+
+                fail:
+                    接口调用失败的回调函数
+
+                complate:
+                    接口调用结束的回调函数（成功和失败都会调用）
+
+        页面返回: 参数obj
+            调用 API wx.navigateBack 或使用组件<navigator open-type="navigateBack">或用户按左上角返回钮
+                delta 返回的页面数 如果delta大于页面数返回首页
+
+        Tab 切换: 参数 object
+            调用 API wx.switchTab 或使用组件 <navigator open-type="switchTab"/> 或用户切换 Tab
+                url: 
+                    需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数。参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&分隔；如 ‘path?key=value&key2=value2’
+                
+                success:
+                    接口调用成功的回调函数
+
+                fail:
+                    接口调用失败的回调函数
+
+                complate:
+                    接口调用结束的回调函数（成功和失败都会调用）
+
+        重启动:
+            调用 API wx.reLaunch 或使用组件 <navigator open-type="reLaunch"/>
+
+        navigator标签
+            url:
+                应用内的跳转链接
+            
+            redirect:
+                打开方式为重定向 即将废弃
+
+            open-type:
+                可选值 ‘navigate’、’redirect’、’switchTab’，对应于wx.navigateTo、wx.redirectTo、wx.switchTab的功能
+
+            hover-class:
+                指定点击时的样式类，当hover-class=”none”时，没有点击态效果
+
+            hover-start-time:
+                按住后多久出现点击态，单位毫秒
+
+            hover-stay-time:
+                手指松开后点击态保留时间，单位毫秒
+
+        Tip:
+            navigateTo, redirectTo 只能打开非 tabBar 页面。
+            switchTab 只能打开 tabBar 页面。
+            reLaunch 可以打开任意页面。
+            页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+            调用页面路由带的参数可以在目标页面的onLoad中获取。
+            规定页面路径只能是五层，尽量避免多层级的交互方式。
+
+    原生API接口:
+        wx.request: 
+            用于发送请求 类似于jQajax
+
+            url:
+                请求地址	
+
+            data:
+                请求的参数	
+
+            header:
+                设置请求的 header，header 中不能设置 Referer。	
+
+            method:
+                请求方式（需大写）有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT	
+
+            dataType:
+                如果设为json，会尝试对返回的数据做一次 JSON.parse	
+
+            responseType:
+                设置响应的数据类型。合法值：text、arraybuffer
+
+            success:
+                成功返回的回调函数 参数是一个对象
+                    res.data 返回的数据
+                    res.header 请求头部
+                    res.statusCode 状态码
+
+            fail:
+                接口调用失败的回调函数	
+
+            complete:
+                接口调用结束的回调函数（调用成功、失败都会执行）
+
+
+
+
+
+
