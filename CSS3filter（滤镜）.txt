@@ -1,0 +1,42 @@
+
+CSS3filter（滤镜）
+    filter: 
+        grayscale 灰度（把图片变成黑白的）
+            参数值: 0 - 1 / 0% - 100%
+            filter: grayscale(1);
+
+        sepia 把照片变成褐色 （看起来像旧照片）
+            参数值: 0 - 1 / 0% - 100%
+            filter: sepia(1)
+
+        saturate 调节图片饱和度
+            参数值: 0 - 1 / 0% - 100%
+            filter: saturate(1)
+
+        hue-rotate 调节图片色相 色相旋转
+            参数值: 'num'deg 角度 
+            filter: hue-rotate(90deg)
+
+        invert 色彩反色
+            参数值: 0 - 1 / 0% - 100%
+            filter: invert(1)
+
+        opacity 改变图片透明度
+            参数值: 0 - 1 
+            filter: opacity(1)
+
+        brightness 图片亮度
+            参数值: 0 - 1 / 0% - 100%
+            filter: brightness(1)
+
+        contrast 图片对比度
+            参数值: 0 - 1 / 0% - 100%
+            filter: contrast(1)
+
+        blur 图片模糊
+            参数值: 'num'px 像素值
+            filter: blur(2px)
+
+        drop-shadow 图片阴影 很像box-shadow
+            参数和box-shadow一样
+            filter: drop-shadow(5px 5px 5px #ccc)
