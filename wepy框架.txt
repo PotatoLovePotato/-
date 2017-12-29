@@ -41,9 +41,18 @@
 组件通信
     1.wepy中是通过$broadcast，$emit，$invoke 三种方法实现通信
         $broadcast：父组件触发所有子组件事件
+            this.$broadcast('子组件在event里定义好的函数名',传递的参数)
+            父子关系:
+                只有import引入时才产生父子关系 slot不产生父子关系
+                
         $emit：子组件触发父组件事件
+            this.$emit('父级在events里定义好的函数名', 传递的参数)
+            父子关系:
+                只有import引入时才产生父子关系 slot不产生父子关系
+
         $invoke：子组件触发子组件事件
-            this.$invoke('组件路径','调用的方法名',配置项)
+            this.$invoke('组件路径','被调用的方法名',传递的参数)
+            注意: 子组件被调用的方法 不要定义在methods 里
 
     
 
