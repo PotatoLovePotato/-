@@ -27,5 +27,10 @@
         git push -u origin master
             origin 是上边设置好的别名 
 
+报错处理 remote: error: GH007: Your push would publish a private email address. 
+        failed to push some refs to
+
+        找到setting：
+        setting->emails->Keep my email address private，把这一项去掉勾选即可。
 
 
