@@ -25,6 +25,12 @@ npm
 
     12. publish 发布包到npm (需要先登录才能发布)
 
+    13. run 运行 package.json 中script部分的命令
+
+    14. start 命令可以直接运行不需要 run
+
+    15. unpublish 撤销发布包
+
 版本号
     通常是3位
     第一位 主版本号 
