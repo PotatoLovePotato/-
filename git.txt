@@ -85,5 +85,10 @@ git 配置ssh
 
     远程仓库配置公钥（github设置里）
 
+报错处理 remote: error: GH007: Your push would publish a private email address. 
+        failed to push some refs to
+
+        找到setting：
+        setting->emails->Keep my email address private，把这一项去掉勾选即可。
 
 

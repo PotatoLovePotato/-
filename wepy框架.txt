@@ -1,8 +1,8 @@
 
 安装脚手架
     1. 安装构件工具 npm i wepy-cli -g
-    2.创建项目      npm new 项目名
-    3.实时编译      wepy build --watch
+    2.创建项目      wepy new 项目名
+    3.实时编译      wepy build --watch 或 npm run dev
     4.使用微信开发者工具新建项目，本地开发选择dist目录。
     5.微信开发者工具 --> 项目 --> 关闭ES6转ES5。
 
@@ -53,6 +53,8 @@
         $invoke：子组件触发子组件事件
             this.$invoke('组件路径','被调用的方法名',传递的参数)
             注意: 子组件被调用的方法 不要定义在methods 里
+
+repeat 循环时 被循环的组件的props会合并到被循环的组件的data中
 
     
 
