@@ -1,0 +1,24 @@
+创建npm私有库
+    需要python 2.7 环境
+
+    1. npm i -g sinopia or yarn global add sinopia （死No皮）
+    2. 运行 sinopia
+    3. 本地查看 http://localhost:4873/
+    4. 正常显示网页安装成功
+
+    安装nrm 管理npm源
+    1. npm install -g nrm 
+    2. nrm add name http://localhost:4873 添加本地的npm镜像地址
+    3. nrm use name 使用本址的镜像地址     name为你要增加的地址
+
+切换到 自定义源 nrm use name
+
+注册 npm adduser 
+
+    报错处理
+    1. 不支持fs-ext和crypt3 （Cannot find module './build/Release/crypt3'）
+        查看sinopia源码里的package.yaml 删除sinopia安装目录node_modules里的fs-ext和crypt3相关的包，否则执行npm添加用户和登陆验证时会报错。包括：.0.2.0@crypt3，.0.6.0@fs-ext，crypt3和fs-ext以及sinopia-htpasswd\node_modules下的crypt3和fs-ext
+
+帮助文档
+    sinopia 安装目录会有 server.md 文件
+    

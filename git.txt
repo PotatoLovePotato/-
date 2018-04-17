@@ -1,31 +1,89 @@
+﻿
+gimp Linux 切图神器
 
-进入要上传的目录
+git 配置
+    git config --global user.name 名字
+    git config --global user.email 邮箱地址
 
-    第一次上传
-        git init 
-            初始化本地库
+git 查看版本控制文件状态
+    git status
 
-        git add .
-            添加要上传的文件 "."代表全部 页可以选择要上传的具体的文件名
+git 上传
+    进入要上传的目录
 
-        git commit -m "上传文件说明"
-            上传文件时的说明
+        第一次上传
+            git init 
+                初始化本地库
 
-        git remote add origin GitHub地址
-            origin 是别名可以更改
+            git add .
+                添加要上传的文件 "."代表全部 页可以选择要上传的具体的文件名
 
-        git push -u origin master
-            开始上传 会提示输入github 账号密码
+            git commit -m "上传文件说明"
+                上传文件时的说明
 
-    第二次上传
-        git add .
-            添加要上传的文件 "."代表全部 页可以选择要上传的具体的文件名
+            git remote add origin GitHub地址
+                origin 是别名可以更改
 
-        git commit -m "上传文件说明"
-            上传文件时的说明
+            git push -u origin master
+                开始上传 会提示输入github 账号密码
 
-        git push -u origin master
-            origin 是上边设置好的别名 
+        第二次上传
+            git add .
+                添加要上传的文件 "."代表全部 页可以选择要上传的具体的文件名
+
+            git commit -m "上传文件说明"
+                上传文件时的说明
+
+            git push -u origin master
+                origin 是上边设置好的别名
+git 删除文件
+    git rm 文件名
+
+git 查看日志 
+    git log
+        逐行的详细显示
+
+    git log --pertty=oneline
+        单行的简介所有日志显示在一起
+
+    git reflog 查看所有操作
+        git reflog 可以查看所有分支的所有操作记录（包括commit和reset的操作），包括已经被删除的commit记录，git log则不能察看已经删除了的commit记录
+
+git 版本切换
+    git reset --hard 具体的版本
+        HEAD 最新版本
+        ^ 这个符号代表退回几个版本 不包括最新版本
+        也可以使用 git reflog 查看版本号 直接选择对应的版本 版本号可以不写全但是要保持唯一性 版本号类似hash值
+
+git 分支 
+    git branch 查看分支列表
+
+    创建分支
+        git branch 分支名称
+
+    切换分支
+        git checkout 分支名称
+
+    合并分支
+        选合并到那个分支就切换到那个分支
+        git merge 分支名称
+
+    删除分支
+        git branch -d 分支名称
+
+git 查看远程仓库地址及别名
+    git remote -v
+
+git 删除远程仓库地址别名
+    git remote remove 地址
+
+git 配置ssh
+    获取git远程仓库ssh地址
+
+    创建key
+        ssh-keygrn -t rsa -C "邮箱地址（需要带引号）"
+
+    远程仓库配置公钥（github设置里）
 
 
 

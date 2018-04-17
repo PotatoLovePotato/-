@@ -1,0 +1,16 @@
+
+webpack
+    安装webpack
+        检查是否存在node环境 node -v 不存在先安装node
+
+        如果存在node 运行 npm i webpack -g 命令 等待完成
+
+        webpack -v 查看是否安装成功
+
+    
+
+    package.json 
+        是一个标准的npm说明文件包涵了丰富的信息 可以使用 npm init 自动创建package.json
+        输入这个命令后，终端会问你一系列诸如项目名称，项目描述，作者等信息，不过不用担心，如果你不准备在npm中发布你的模块，这些问题的答案都不重要，回车默认即可。
+    
+    

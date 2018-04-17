@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=750">
+    <title>demo</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <script>
+      
+      var city = ['北京市', '北京市', '大兴区'];
+
+      function cityFilter(city) {
+        if(city[0] == '北京市'){
+          city.splice(1, 1)
+        }
+        if(city[0] == '天津市'){
+          city.splice(1, 1)
+        }
+        if(city[0] == '上海市'){
+          city.splice(1, 1)
+        }
+        if(city[0] == '重庆市'){
+          city.splice(1, 1)
+        }
+        return city
+      }
+      console.log(cityFilter(city))
+
+      var arr = { 
+        "success": true, 
+        "data": { 
+          "_id": "5a5866a789f72935730a5df2", 
+          "merchant_id": 130, 
+          "category_id": 7, 
+          "name": "测试商品AAA", 
+          "goods_sn": "", 
+          "weight": "", 
+          "bulk": "", 
+          "freight": "", 
+          "buy_min": "", 
+          "buy_max": "", 
+          "status": 0, 
+          "point_support": "0", 
+          "point_exchange": "", 
+          "point": "", 
+          "vip_support": 
+          "0", "thumb": "", 
+          "imgs": [""], 
+          "detail": "", 
+          "is_multi_spec": "1", 
+          "stock": 0, "price": 0, 
+          "market_price": 0, 
+          "props": [
+            { "id": 3, "name": "尺码", "items": ["S", "M", "L"] }, 
+            { "id": 1, "name": "颜色", "items": ["R", "G", "B"] }
+          ], 
+          "sku": [
+            { 
+              "value": [
+                { "prop_id": 3, "value": "S" }, 
+                { "prop_id": 1, "value": "R" }
+              ], 
+              "skucode": "20001", 
+              "img": [""], 
+              "price": 120, 
+              "market_price": 0, 
+              "stock": 12 
+            }, { 
+              "value": [
+                { "prop_id": 3, "value": "S" }, 
+                { "prop_id": 1, "value": "G" }
+              ], 
+              "skucode": "20002", 
+              "img": [""], 
+              "price": 120, 
+              "market_price": 0, "stock": 12 
+            }, { 
+              "value": [
+                { "prop_id": 3, "value": "S" }, 
+                { "prop_id": 1, "value": "B" }
+              ], 
+              "skucode": "20003", 
+              "img": [""], 
+              "price": 120, 
+              "market_price": 0, "stock": 12 
+            }, { 
+              "value": [
+                { "prop_id": 3, "value": "M" },
+                 { "prop_id": 1, "value": "R" }
+                ], 
+                "skucode": "20004", 
+                "img": [""], 
+                "price": 120, 
+                "market_price": 0, 
+                "stock": 12 
+              }, { 
+                "value": [
+                  { "prop_id": 3, "value": "M" }, 
+                  { "prop_id": 1, "value": "G" }
+                ], "skucode": "20005", "img": [""], "price": 120, "market_price": 0, "stock": 12 }, { "value": [{ "prop_id": 3, "value": "M" }, { "prop_id": 1, "value": "B" }], "skucode": "20006", "img": [""], "price": 120, "market_price": 0, "stock": 12 }, { "value": [{ "prop_id": 3, "value": "L" }, { "prop_id": 1, "value": "R" }], "skucode": "20007", "img": [""], "price": 120, "market_price": 0, "stock": 12 }, { "value": [{ "prop_id": 3, "value": "L" }, { "prop_id": 1, "value": "G" }], "skucode": "20008", "img": [""], "price": 120, "market_price": 0, "stock": 12 }, { "value": [{ "prop_id": 3, "value": "L" }, { "prop_id": 1, "value": "B" }], "skucode": "20009", "img": [""], "price": 120, "market_price": 0, "stock": 12 }], "id": 10000010, "created_at": "2018-01-12 15:41:27", "updated_at": "2018-01-12 15:41:27" } }
+              
+                console.log(filter())
+
+                function filter(){
+                  var msg = [];
+                  arr.data.sku.forEach( (item) => {
+                    // console.log(item)
+                    var str = ''
+                    item.value.forEach( (i) => {
+                      str += i.value
+                    })
+                    msg.push(str)
+                  })
+                  return msg;
+                }
+
+				function indexSearch(size, color){
+					var s = []
+					filter().forEach( (item, index ) => {
+
+					if(item.indexOf(size) != -1 && item.indexOf(color) != -1){
+						s.push(index)
+					}
+
+					})
+					console.log(s)
+					return s[0]
+				}
+                var num = indexSearch("M","R")
+
+                console.log(arr.data.sku[num].skucode)
+
+                var a = [,,,,,'S']
+                for(let i = 0; i < a.length; i++){
+                  if(!a[i]){
+                    a.splice(i, 1)
+                    i--;
+                  }
+                }
+                var inx;
+                console.log(asd({
+                  data: ['sds',"sfs", 'dfg','qew'],
+                  search: ["e","w","q"]
+                }))
+
+                
+                function asd(obj, inx) {
+
+                  var s = []
+                  var d = [];
+                  var num = inx || 0
+                  obj.data.forEach((item, index) => {
+                    
+                    if (item.indexOf(obj.search[num]) != -1) {
+                      console.log(obj.search[num])
+                      s.push(item);
+                      obj.index ? d.push(obj.index[index]) : d.push(index)
+                    }
+
+                  })
+                  if (s.length > 1) {
+                    num++;
+                    // console.log(num)
+                    return asd({
+                      data: s,
+                      search: obj.search,
+                      index: d
+                    }, num)
+                  } else {
+                    console.log(d)
+                    return d[0]
+                  }
+
+                }
+                
+
+    </script>
+  </body>
+</html>
